@@ -1,7 +1,14 @@
 const http = require('http')
 const server = http.createServer(function (req, res) {
-  console.log(req.headers, req.url, req.method)
-  res.setHeader('Content-Type', 'text/html')
+    /* console.log(req.headers, req.url, req.method) */
+    const url = req.url;
+    url === '/' ? res.write(`<html>
+    <head><title>Submit</title></head>
+    <body>
+    <form action='/message' method='POST'><input type='text' name='message' /> <button type='submit'>Submit</button></form></body>
+    </html>`) : '';
+
+ /*  res.setHeader('Content-Type', 'text/html')
   res.write(`<html lang="en">`)
   res.write(`<head><meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +16,6 @@ const server = http.createServer(function (req, res) {
     <title>Document</title>
 </head>`)
   res.write(`<body>Ade is cool!!</body>`)
-  res.write(`</html>`)
+  res.write(`</html>`) */
 })
 server.listen(3003)
